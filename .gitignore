@@ -2,6 +2,9 @@
 env/
 evv/*
 
+*.sublime-project
+*.sublime-workspace
+
 *.py[cod]
 
 # C extensions
