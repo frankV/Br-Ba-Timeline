@@ -1,2 +1,2 @@
-The [Br]eaking [Ba]d Timline
+The [Br]eaking [Ba]d Timeline
 =============
