@@ -1,0 +1,270 @@
+<div>
+
+    <h2>Episodes</h2>
+
+    <script type = "text/ng-template" id="episode-save.html">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="form" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+                      ng-submit="ok()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                ng-click="cancel()">&times;</button>
+                        <h4 class="modal-title" id="myEpisodeLabel">Create or edit a Episode</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="episode.id" readonly>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label>season:</label>
+                            
+                            <input type="number" step="any" class="form-control" name="season"
+                                   ng-model="episode.season" ng-required="true"
+                                   min=1.0 max=5.2/>
+                            <span class="error" ng-show="form.season.$error.min">Must be greater than or equal to 1.0.</span>
+                            <span class="error" ng-show="form.season.$error.max">Must be less than or equal to 5.2.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>number:</label>
+                            
+                            <input type="number" class="form-control" name="number"
+                                   ng-model="episode.number" ng-required="true"
+                                   min=1 />
+                            <span class="error" ng-show="form.number.$error.min">Must be greater than or equal to 1.</span>
+                            <span class="error" ng-show="form.number.$error.max">Must be less than or equal to .</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>title:</label>
+                            
+                            <input type="text" class="form-control" name="title"
+                                   ng-model="episode.title" ng-required="true"
+                                   />
+                            <span class="error" ng-show="form.title.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.title.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>released:</label>
+                            
+                            <input type="text" class="form-control" name="released" ui-date="releasedDateOptions" ui-date-format="yy-mm-dd" 
+                                   ng-model="episode.released" ng-required="false"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>duration:</label>
+                            
+                            <input type="number" class="form-control" name="duration"
+                                   ng-model="episode.duration" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.duration.$error.min">Must be greater than or equal to .</span>
+                            <span class="error" ng-show="form.duration.$error.max">Must be less than or equal to .</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>rating:</label>
+                            
+                            <input type="number" step="any" class="form-control" name="rating"
+                                   ng-model="episode.rating" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.rating.$error.min">Must be greater than or equal to .</span>
+                            <span class="error" ng-show="form.rating.$error.max">Must be less than or equal to .</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>summary:</label>
+                            
+                            <input type="text" class="form-control" name="summary"
+                                   ng-model="episode.summary" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.summary.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.summary.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>storyline:</label>
+                            
+                            <input type="text" class="form-control" name="storyline"
+                                   ng-model="episode.storyline" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.storyline.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.storyline.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>photos:</label>
+                            
+                            <input type="text" class="form-control" name="photos"
+                                   ng-model="episode.photos" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.photos.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.photos.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>keywords:</label>
+                            
+                            <input type="text" class="form-control" name="keywords"
+                                   ng-model="episode.keywords" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.keywords.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.keywords.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>quote:</label>
+                            
+                            <input type="text" class="form-control" name="quote"
+                                   ng-model="episode.quote" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.quote.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.quote.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>director:</label>
+                            
+                            <input type="text" class="form-control" name="director"
+                                   ng-model="episode.director" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.director.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.director.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>writer:</label>
+                            
+                            <input type="text" class="form-control" name="writer"
+                                   ng-model="episode.writer" ng-required="false"
+                                   />
+                            <span class="error" ng-show="form.writer.$error.minlength">Must be at least  characters.</span>
+                            <span class="error" ng-show="form.writer.$error.maxlength">Must be at most  characters.</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>calendar_start:</label>
+                            
+                            <input type="text" class="form-control" name="calendar_start" ui-date="calendar_startDateOptions" ui-date-format="yy-mm-dd" 
+                                   ng-model="episode.calendar_start" ng-required="true"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>calendar_end:</label>
+                            
+                            <input type="text" class="form-control" name="calendar_end" ui-date="calendar_endDateOptions" ui-date-format="yy-mm-dd" 
+                                   ng-model="episode.calendar_end" ng-required="true"/>
+                        </div>
+                        
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel
+                        </button>
+                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+
+    <button class="btn btn-primary btn-lg" ng-click="create()">
+        <span class="glyphicon glyphicon-flash"></span> Create a new Episode
+    </button>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                
+                <th>season</th>
+                
+                <th>number</th>
+                
+                <th>title</th>
+                
+                <th>released</th>
+                
+                <th>duration</th>
+                
+                <th>rating</th>
+                
+                <th>summary</th>
+                
+                <th>storyline</th>
+                
+                <th>photos</th>
+                
+                <th>keywords</th>
+                
+                <th>quote</th>
+                
+                <th>director</th>
+                
+                <th>writer</th>
+                
+                <th>calendar_start</th>
+                
+                <th>calendar_end</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="episode in episodes">
+                <td>{{episode.id}}</td>
+                
+                <td>{{episode.season }}</td>
+                
+                <td>{{episode.number }}</td>
+                
+                <td>{{episode.title }}</td>
+                
+                <td>{{episode.released  | date:'yyyy-MM-dd'}}</td>
+                
+                <td>{{episode.duration }}</td>
+                
+                <td>{{episode.rating }}</td>
+                
+                <td>{{episode.summary }}</td>
+                
+                <td>{{episode.storyline }}</td>
+                
+                <td>{{episode.photos }}</td>
+                
+                <td>{{episode.keywords }}</td>
+                
+                <td>{{episode.quote }}</td>
+                
+                <td>{{episode.director }}</td>
+                
+                <td>{{episode.writer }}</td>
+                
+                <td>{{episode.calendar_start  | date:'yyyy-MM-dd'}}</td>
+                
+                <td>{{episode.calendar_end  | date:'yyyy-MM-dd'}}</td>
+                
+                <td>
+                    <button type="submit"
+                            ng-click="update(episode.id)"
+                            class="btn">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                    <button type="submit"
+                            ng-click="delete(episode.id)"
+                            class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
