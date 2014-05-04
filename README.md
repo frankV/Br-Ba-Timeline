@@ -12,8 +12,7 @@ Data for Episodes up to Season 3
 <br>[How Much Time Has Passed on Breaking Bad?](http://www.vulture.com/2011/07/breaking_bad_calendar.html)
 <br>by Ray Rahman
 
-Epsiode meta-data collected from [IMDb](http://imdb.com)
-<br>using [IMDbPy](http://imdbpy.sourceforge.net/)
+Epsiode meta-data collected from [IMDb](http://imdb.com) using [IMDbPy](http://imdbpy.sourceforge.net/)
 
 
 ##Running the Episode Scraper
@@ -39,7 +38,7 @@ $ python manage.py runserver
 ```
 
 ##Running the Angular App
-**THIS WILL PROBABLY COME OUT LATER**
+**THIS WILL COME OUT LATER**
 ```bash
 $ grunt server
 Running "server" task
@@ -54,16 +53,25 @@ Running "watch" task
 Waiting...
 ```
 
-<br>
-##Software Resources and Dependencies
-Flask
-<br>MongoDB
-<br>IMDbPy
-<br>BeautifulSoup4
-<br>Bootstrap
 
-<br>
+##Stack
+[Flask][Flask]
+<br>[Angularjs][Angularjs]
+<br>[MongoDB][MongoDB]
+<br>[IMDbPy][IMDbPy]
+<br>[Bootstrap][Bootstrap]
+<br> - Modified 'Minimal' theme by [BlackTie.co][blacktie.co]
+
+
 ##Project Creators
 [Emily Morehouse](/emilyemorehouse)
 <br>
 [Frank Valcarcel](/frankv)
+
+
+[Flask]: http://flask.pocoo.org/
+[Angularjs]: http://angularjs.org/
+[MongoDB]: http://mongodb.org
+[IMDbPy]: http://imdbpy.sourceforge.net/
+[Bootstrap]: https://getbootstrap.com
+[blacktie.co]: http://www.blacktie.co/
