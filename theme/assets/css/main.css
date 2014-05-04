@@ -79,14 +79,18 @@ a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/header-bg.jpg) no-repeat center top fixed;
-	margin-top: -10px;
-	padding-top:20px;
-	text-align:center;
-	background-attachment: relative;
-	background-position: center center;
+	background: url(../img/header-bg.jpg) repeat;
+  position: fixed;
+	/*text-align:center;*/
+	/*background-attachment: relative;*/
+	/*background-position: center center;*/
 	min-height: 700px;
 	width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  z-index: -1;
+
 
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -329,6 +333,10 @@ a:after {
     display: inline;
   }
 
+#timeline {
+  margin-top: 50%;
+}
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
@@ -420,9 +428,14 @@ span.calendar-duration {
   position: absolute;
 
 }
-span.calendar-duration.inverted {
-  margin-left: 31%;
-}
+  span.calendar-duration.inverted {
+    margin-left: 32%;
+    text-align: right;
+  }
+  span.range {
+    display: block;
+  }
+
 .timeline > li.timeline-inverted > .timeline-panel {
   float: right;
 }
