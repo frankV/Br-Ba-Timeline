@@ -124,6 +124,16 @@ a:after {
 	margin-top: 15px;
 }
 
+#timeline {
+}
+
+#e {
+  background: #ddd;
+  top: 56%;
+  margin-top: 55%;
+  padding-bottom: 70px;
+}
+
 
 /* Footer Wrap */
 
@@ -332,10 +342,6 @@ a:after {
   .pagination < div.season {
     display: inline;
   }
-
-#timeline {
-  margin-top: 50%;
-}
 
 .timeline {
   list-style: none;

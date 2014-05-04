@@ -15,5 +15,5 @@ $(window).scroll(function(e){
 });
 function parallax(){
   var scrolled = $(window).scrollTop();
-  $('#headerwrap').css('top',-(scrolled*0.6)+'px');
+  $('#headerwrap').css('top',-(scrolled*0.175)+'px');
 }
