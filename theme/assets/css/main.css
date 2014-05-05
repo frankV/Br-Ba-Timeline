@@ -172,7 +172,7 @@ a:after {
 	width: 260px;
 	height: 100%;
 	top: 0;
-	z-index: 10;
+	z-index: 110;
 	text-align: left;
 }
 
@@ -354,6 +354,24 @@ a:after {
     margin:0;
   }
 
+  .page-header-top-bar {
+    position: fixed;
+    top: 0;
+    left: 50px;
+    padding: 0px;
+    width: 93%;
+    background-color: #DDD;
+    z-index: 100;
+    padding-top: 15px;
+    margin-top: 0;
+    display: none;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .page-header-top-bar h1{
+    margin-left: 28px;
+  }
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
@@ -433,7 +451,7 @@ a:after {
   left: 50%;
   margin-left: -25px;
   background-color: #999999;
-  z-index: 100;
+  z-index: 10;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
   border-bottom-right-radius: 50%;

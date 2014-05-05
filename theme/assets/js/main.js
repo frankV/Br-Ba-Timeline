@@ -10,10 +10,34 @@
 
 })(jQuery)
 
+var headers = new Array();
+$('.page-header').each(function () {
+    headers.push($(this));
+})
+
+console.log(headers);
 
 $(window).scroll(function(e){
   parallax();
+  header_stack()
 });
+
+function header_stack() {
+    var top_bar = $('#stack');
+    var stack_top = headers[0];
+    // console.log(top_bar.offset().top);
+    // console.log(stack_top.offset().top);
+
+    if (stack_top.offset().top - 17 <= top_bar.offset().top) {
+        console.log('first stack on or above');
+        top_bar.show();
+        top_bar.html(stack_top.html());
+    }
+    else {
+        console.log('first stack below');
+        top_bar.hide();
+    }
+}
 
 function parallax(){
   var scrolled = $(window).scrollTop();
