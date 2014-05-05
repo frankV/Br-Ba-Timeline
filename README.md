@@ -1,4 +1,4 @@
-The [Br]eaking [Ba]d Timeline
+The [Br]eaking [Ba]d [Ti]meline
 =============
 
 ####This project aims to create a visual timeline representation of AMC's Breaking Bad.

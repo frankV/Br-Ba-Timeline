@@ -7,6 +7,7 @@
 		$('#theMenu').toggleClass('menu-open');
 	});
 
+
 })(jQuery)
 
 
@@ -16,7 +17,7 @@ $(window).scroll(function(e){
 
 function parallax(){
   var scrolled = $(window).scrollTop();
-  $('#headerwrap').css('top',-(scrolled*0.175)+'px');
+  $('#headerwrap').css('top',-(scrolled*0.2)+'px');
 }
 
 var win_height = 0;
