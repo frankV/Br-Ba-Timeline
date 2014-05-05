@@ -62,6 +62,9 @@ Waiting...
 <br>[Bootstrap][Bootstrap]
 <br> - Modified 'Minimal' theme by [BlackTie.co][blacktie.co]
 
+###Breaking Bad Logo
+Entirely CSS and SVG. Created by [Tim Pietrusky][timpietrusky.com] and adapted from his [codepen][http://codepen.io/TimPietrusky/pen/Bsegb]
+
 
 ##Project Creators
 [Emily Morehouse](/emilyemorehouse)
