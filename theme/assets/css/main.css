@@ -7,6 +7,17 @@
  * URL: http://blacktie.co
  */
 
+@font-face {
+  font-family: BreakingBad;
+  src: url("../font/HeartBreakingBad.otf") format("opentype");
+}
+
+span.BreakingBad {
+  font-family: 'BreakingBad';
+  color: #fff;
+  font-size: 136px;
+}
+
 body {
   background-color: #f2f2f2;
     font-family: 'EB Garamond', serif;
@@ -593,12 +604,12 @@ div[role="bottom-left-2"] {
 .title-2 {
   width:50px;
   display:inline-block;
-  height: 130px;
+  height: 169px;
   vertical-align: bottom;
 }
 
 .title-2 {
-  height: 134px;
+  height: 168px;
 }
 
 #smoke {
