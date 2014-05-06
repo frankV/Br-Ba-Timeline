@@ -25,17 +25,21 @@ $(window).scroll(function(e){
 function header_stack() {
     var top_bar = $('#stack');
     var stack_top = headers[0];
-    // console.log(top_bar.offset().top);
-    // console.log(stack_top.offset().top);
+    var current_header;
+    var stacked = false;
 
-    if (stack_top.offset().top - 17 <= top_bar.offset().top) {
-        console.log('first stack on or above');
+
+    if (!stacked && headers[0].offset().top - 17 <= top_bar.offset().top) {
         top_bar.show();
         top_bar.html(stack_top.html());
+        current_header = 0;
+        stacked = true;
+        console.log('stacked');
+
     }
     else {
-        console.log('first stack below');
         top_bar.hide();
+        stacked = false;
     }
 }
 
