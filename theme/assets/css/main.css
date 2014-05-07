@@ -630,11 +630,14 @@ div[role="bottom-left-2"] {
   height: 168px;
 }
 
-#smoke {
-  position: absolute;
-  z-index: -1;
-  left: 22%;
-  top: 0;
+.modal.modal-wide .modal-dialog {
+  width: 90%;
+}
+.modal-wide .modal-body {
+  overflow-y: auto;
+}
+#modal .modal-body p {
+  margin-bottom: 900px
 }
 
 
