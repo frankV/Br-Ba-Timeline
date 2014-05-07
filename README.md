@@ -37,22 +37,6 @@ $ python manage.py runserver
  * Running on http://0.0.0.0:5000/
 ```
 
-##Running the Angular App
-**THIS WILL COME OUT LATER**
-```bash
-$ grunt server
-Running "server" task
-
-Running "configureProxies" task
-Proxy created for: /bb.timeline to localhost:5000
-
-Running "connect:livereload" (connect) task
-Started connect web server on 127.0.0.1:9000.
-
-Running "watch" task
-Waiting...
-```
-
 
 ##Stack
 [Flask][Flask]

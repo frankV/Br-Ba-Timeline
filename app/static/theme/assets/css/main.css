@@ -425,8 +425,8 @@ a:after {
   background-color: #fff;
 }
   .timeline > li > .timeline-panel:hover {
-    -webkit-box-shadow: 0 1px 36px rgba(255, 185, 54, 0.274);
-    box-shadow: 0 1px 36px rgba(255, 185, 54, 0.274);
+    -webkit-box-shadow: 0 1px 12px rgba(255, 185, 54, 0.274);
+    box-shadow: 0 1px 12px rgba(255, 185, 54, 0.274);
     cursor: pointer;
   }
 .timeline > li > .timeline-panel:before {
@@ -462,7 +462,7 @@ a:after {
   top: 16px;
   left: 50%;
   margin-left: -25px;
-  background-color: #999999;
+  background-color: #ccc;
   z-index: 10;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
@@ -631,15 +631,42 @@ div[role="bottom-left-2"] {
 }
 
 .modal.modal-wide .modal-dialog {
-  width: 90%;
+  width: 80%;
 }
 .modal-wide .modal-body {
   overflow-y: auto;
 }
 #modal .modal-body p {
   margin-bottom: 900px
+  margin-bottom: 0;
+  line-height: 20px;
+  font-size: 19px;
+  margin-top: 20px;
+}
+.modal-body {
+   max-height:80%;
 }
 
+.eps-col {
+  overflow: hidden;
+}
+  .eps-col img {
+    width: 400px;
+    height: 300px;
+    margin: -75px 0 0 -100px;
+  }
+  .eps-col .timeline-heading {
+    margin-top: -2px;
+  }
+
+  .eps-col .timeline-title {
+    line-height: 42px;
+  }
+
+.disqus-col {
+  overflow-y: scroll;
+  max-height: 590px;
+}
 
 /* Smartphones (portrait) ----------- */
 @media only screen
