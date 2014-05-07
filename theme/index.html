@@ -4,15 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="Frank Valcarcel, Emily Morehouse">
   <link rel="shortcut icon" href="assets/ico/favicon.png">
 
   <title>Breaking Bad Timeline</title>
 
-  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
   <link href="assets/css/main.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
   <script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/modernizr.custom.js"></script>
@@ -21,17 +20,17 @@
   <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
   </head>
 
-  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+  <body>
 
 	<!-- Menu -->
-	<nav class="menu" id="theMenu">
+<!-- 	<nav class="menu" id="theMenu">
 		<div class="menu-wrap">
 			<h1 class="logo"><a href="index.html#home">Breaking Bad<br>Timeline</a></h1>
 			<i class="icon-remove menu-close"></i>
@@ -40,15 +39,14 @@
 			<a href="#"><i class="icon-facebook"></i></a>
 			<a href="#"><i class="icon-twitter"></i></a>
 			<a href="#"><i class="icon-envelope"></i></a>
-		</div>
+		</div> -->
 
 		<!-- Menu button -->
-		<div id="menuToggle"><i class="icon-reorder"></i></div>
-	</nav>
+<!-- 		<div id="menuToggle"><i class="icon-reorder"></i></div>
+	</nav> -->
 
 
-	<!-- ========== HEADER SECTION ========== -->
-	<section id="home" name="home"></section>
+<section id="home" name="home"></section>
 	<div id="headerwrap">
 		<div class="container">
 			<div class="row">
@@ -99,11 +97,29 @@
 </section>
 </div>
 <!-- /Breaking Bad Logo -->
-				<div class="col-lg-6 col-lg-offset-3">
-				</div>
+				<div class="col-lg-6 col-lg-offset-3"></div>
 			</div>
 		</div><!-- /container -->
 	</div><!-- /headerwrap -->
+
+
+<div id="modal" class="modal modal-wide fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <section id="timeline" name="timeline"></section>
 <div id="e">
@@ -127,7 +143,7 @@
         <h1>Season 1</h1>
     </div>
     <ul class="timeline">
-        <li>
+      <li data-toggle="modal" href="#modal">
         	<span class="calendar-duration">
             <h4> 9/7/2007 - 9/28/2007
               <span class="range">3 weeks</span>
@@ -141,7 +157,8 @@
               <h4 class="timeline-title">Episode 1: Pilot</h4>
             </div>
             <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+              <img src="assets/img/season1.jpg" >
+              <p>To provide for his family's future after he is diagnosed with lung cancer, a chemistry genius turned high school teacher teams up with an ex-student to cook and sell the world's purest crystal meth.</p>
             </div>
           </div>
         </li>
@@ -151,7 +168,7 @@
               <span class="range">3 weeks, 2 days</span>
             </h4>
           </span>
-          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-calendar"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">Mussum ipsum cacilds</h4>
@@ -162,7 +179,7 @@
           </div>
         </li>
         <li>
-          <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-calendar"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">Mussum ipsum cacilds</h4>
@@ -173,7 +190,7 @@
           </div>
         </li>
         <li class="timeline-inverted">
-          <div class="timeline-badge success"><i class="glyphicon glyphicon-thumbs-up"></i></div>
+          <div class="timeline-badge success"><i class="glyphicon glyphicon-calendar"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">Mussum ipsum cacilds</h4>
@@ -214,7 +231,7 @@
               <span class="range">3 weeks, 2 days</span>
             </h4>
           </span>
-          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-calendar"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">Mussum ipsum cacilds</h4>
@@ -225,7 +242,7 @@
           </div>
         </li>
         <li>
-          <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-badge danger"><i class="glyphicon glyphicon-calendar"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">Mussum ipsum cacilds</h4>
@@ -236,7 +253,7 @@
           </div>
         </li>
         <li class="timeline-inverted">
-          <div class="timeline-badge success"><i class="glyphicon glyphicon-thumbs-up"></i></div>
+          <div class="timeline-badge success"><i class="glyphicon glyphicon-calendar"></i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">Mussum ipsum cacilds</h4>
@@ -260,11 +277,13 @@
 			<p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
 
 			<div class="col-lg-6 col-lg-offset-3">
-				<p>A full time theme crafter based in Madrid, Spain. I love designing beautiful, clean and user-friendly interfaces for websites.</p>
-				<p>My passion is turning good ideas and products into eye-catching sites.</p>
-				<p>Sometimes I blog about design and web trends. Also I share links and my thoughts on <a href="http://twitter.com/BlackTie_co">Twitter</a>. Need a free handsome bootstrap theme? <a href="http://blacktie.co">Done!</a></p>
-				<p>I'm available for freelance jobs. Contact me now.</p>
-				<p><button type="button" class="btn btn-warning">I HAVE A FREELANCE JOB</button></p>
+				<p>Just a pair of full-time computer science students who binge watch Netflix while burning holes in their keyboards.</p>
+				<p>Sometimes we blog about web development or computational theory. Sometimes we rant on Twitter. Sometimes we find time away from screens to enjoy a good burger and a couple beers</p>
+				<p>We're available for consulting gigs, unless you're from Google or Amazon then we're simply AVAILABLE!</p>
+        <p>If you want to check out some of our other projects take a peek at our LinkedIn, GitHub, and Bitbucket accounts. We currently have some cool things in the chamber.
+        </p>
+        <p>Go Noles!</p>
+				<!-- <p><button type="button" class="btn btn-warning">I HAVE A FREELANCE JOB</button></p> -->
 			</div>
 		</div>
 	</div><!-- /container -->

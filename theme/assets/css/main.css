@@ -250,7 +250,7 @@ a:after {
 	margin: 25px 2px;
 }
 
-.menu-close {
+/*.menu-close {
 	cursor: pointer;
 	display: block;
 	position: absolute;
@@ -275,10 +275,10 @@ a:after {
 		-ms-transition: all .1s ease-in-out;
 		 -o-transition: all .1s ease-in-out;
 			transition: all .1s ease-in-out;
-}
+}*/
 
 /* Push the body after clicking the menu button */
-.body-push {
+/*.body-push {
 	overflow-x: hidden;
 	position: relative;
 	left: 0;
@@ -330,7 +330,7 @@ a:after {
 		-ms-transition: all .1s ease-in-out;
 		 -o-transition: all .1s ease-in-out;
 			transition: all .1s ease-in-out;
-}
+}*/
 
 .pagination {
   position: absolute;
@@ -422,7 +422,13 @@ a:after {
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   margin-left: 6px;
+  background-color: #fff;
 }
+  .timeline > li > .timeline-panel:hover {
+    -webkit-box-shadow: 0 1px 36px rgba(255, 185, 54, 0.274);
+    box-shadow: 0 1px 36px rgba(255, 185, 54, 0.274);
+    cursor: pointer;
+  }
 .timeline > li > .timeline-panel:before {
   position: absolute;
   top: 26px;
@@ -463,6 +469,12 @@ a:after {
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
 }
+
+  .timeline > li > .timeline-badge .glyphicon {
+    top: 3px;
+    left: 1px;
+  }
+
 span.calendar-duration {
   margin-top: 23px;
   margin-left: 54%;
@@ -511,10 +523,16 @@ span.calendar-duration {
 .timeline-title {
   margin-top: 0;
   color: inherit;
+  font-size: 25px;
+  text-transform: uppercase;
+  border-bottom: solid #ccc 1px;
 }
 .timeline-body > p,
 .timeline-body > ul {
   margin-bottom: 0;
+  line-height: 20px;
+  font-size: 19px;
+  margin-top: 20px;
 }
 .timeline-body > p + p {
   margin-top: 5px;

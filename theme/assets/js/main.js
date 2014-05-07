@@ -1,15 +1,20 @@
-;(function(){
+$(document).ready(function(){
+    // Menu settings
+    // $('#menuToggle, .menu-close').on('click', function(){
+    //     $('#menuToggle').toggleClass('active');
+    //     $('body').toggleClass('body-push-toleft');
+    //     $('#theMenu').toggleClass('menu-open');
+    // });
 
-	// Menu settings
-	$('#menuToggle, .menu-close').on('click', function(){
-		$('#menuToggle').toggleClass('active');
-		$('body').toggleClass('body-push-toleft');
-		$('#theMenu').toggleClass('menu-open');
-	});
+    // $("ul.timeline li").click(function(){
+    //     $("#modal").modal({show:true});
+    // });
+});
 
-
-})(jQuery)
-
+$(".modal-wide").on("show.bs.modal", function() {
+  var height = $(window).height() - 200;
+  $(this).find(".modal-body").css("max-height", height);
+});
 
 $(window).scroll(function(e){
   parallax();
