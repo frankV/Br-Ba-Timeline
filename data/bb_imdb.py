@@ -1,15 +1,17 @@
 # -*- coding: latin-1 -*-
 from imdb import IMDb, helpers
 from pprint import pprint as pp
+import os, argparse, re
+from datetime import date, timedelta
+from bs4 import BeautifulSoup as bs4
 
 
 class MyEpisode(object):
-
     """
     [u'music department', 'plot outline', 'camera and electrical department', u'distributors', 'rating', 'runtimes', 'costume designer', u'thanks', 'make up', 'year', 'production design', 'miscellaneous crew', 'color info', 'number of episodes', u'special effects department', 'visual effects', 'votes', 'producer', 'title', 'assistant director', 'writer', 'casting director', 'episode of', 'production manager', 'set decoration', 'editor', 'certificates', u'costume department', 'country codes', 'language codes', 'cover url', u'casting department', 'special effects companies', 'season', 'sound mix', 'genres', u'production companies', 'stunt performer', 'miscellaneous companies', 'cinematographer', 'art direction', 'original air date', 'sound crew', 'director', 'kind', 'episode', u'art department', 'languages', u'transportation department', 'countries', 'cast', 'original music', u'editorial department']
     """
 
-    def __init__(self, episode, id):
+    def __init__(self, episode, id, episode_dates):
         self.id = int(id)
         self.season = episode.data['season'] if episode.data.has_key('season') else ''
         self.number = episode.data['episode'] if episode.data.has_key('episode') else ''
@@ -25,12 +27,14 @@ class MyEpisode(object):
 
         self.quote = ''
         self.summary = ''
+        self.time_since_pilot = ''
+        self.calendar_start = ''
+        self.calendar_end = ''
 
-        # these are set scrapes-eps/py
-        # self.duration = ''
-        # self.calendar_start = ''
-        # self.calendar_end = ''
-
+    def set_time(self, episode_dates):
+        self.time_since_pilot = episode_dates['time_since_pilot']
+        self.calendar_start = episode_dates['calendar_start']
+        self.calendar_end = episode_dates['calendar_end']
 
     def to_dict(self):
         return dict(
@@ -38,7 +42,7 @@ class MyEpisode(object):
             number = self.number,
             title = self.title,
             released = self.released,
-            duration = self.duration,
+            time_since_pilot = self.time_since_pilot,
             rating = self.rating,
             summary = self.summary,
             storyline = self.storyline,
@@ -54,6 +58,103 @@ class MyEpisode(object):
 
     def __repr__(self):
         return '<Episode %r>' % (self.id)
+
+
+def parse_args():
+    """ argparse options
+
+    usage: scrape-eps.py [-h] filename
+
+    scrapes eps(episodes) from html file.
+
+    positional arguments:
+      filename    file to use
+
+    optional arguments:
+      -h, --help  show this help message and exit
+
+    """
+    parser = argparse.ArgumentParser(description='scrapes eps from html file.', fromfile_prefix_chars="@" )
+    parser.add_argument('filename', help='file to use', action='store')
+    args = parser.parse_args()
+    return args
+
+
+def parse_html(filename):
+
+    cwd = os.getcwd()
+    f = open(os.path.join(cwd, filename), 'r')
+
+    Walters_Birthday = date(1957, 9, 7)
+    Walter_Turns_50 = Walters_Birthday.replace(year = Walters_Birthday.year + 50)
+    First_Calendar_Day = Walter_Turns_50
+
+    eps_start_date = First_Calendar_Day
+    eps_end_date = None
+    weekDelta = 0
+    dayDelta = 0
+
+    # parsing
+    html = bs4(f)   # souping
+    if html.find('p', attrs={'class' : 'eps'}):
+        all_episodes = []
+        sections = html.findAll('p', attrs={'class' : 'eps'})
+        for section in sections:
+            if '<strong>' in str(section):
+                title = section.find('strong')
+                title = ''.join(title.findAll(text=True))
+
+                eps_title = re.search(r'\"(.+?)\"', title)
+
+                eps_season = re.search(r'(Season [0-9]+)', title)
+                eps_number = re.search(r'(Episode [0-9]+)', title)
+                season_id = re.search(r'[0-9]+', eps_season.group(0))
+                episode_id = re.search(r'[0-9]+', eps_number.group(0))
+                eps_tdelta = re.search(r'\((.*?)\)', title)
+
+                eps_tdeltaWeek = re.search(r'([0-9]+ week?)', eps_tdelta.group(0))
+                if eps_tdeltaWeek:
+                    eps_tdeltaWeek = re.search(r'[0-9]+', eps_tdeltaWeek.group(0))
+                    weeks = int(eps_tdeltaWeek.group(0))
+                    weekDelta = timedelta(weeks = weeks)
+
+                eps_tdeltaDay = re.search(r'([0-9]+ day?)', eps_tdelta.group(0))
+                if eps_tdeltaDay:
+                    eps_tdeltaDay = re.search(r'[0-9]+', eps_tdeltaDay.group(0))
+                    days = int(eps_tdeltaWeek.group(0))
+                    dayDelta = timedelta(days = days)
+
+                if eps_end_date != None:
+                    eps_start_date = last_eps_end_date
+                    # last_eps_end_date isn't initialized (defined at the end of this
+                    # function at the end of the first loop.. not sure what it's supposed to be.
+
+                # add week delta
+                if weekDelta != 0:
+                    eps_end_date = First_Calendar_Day + weekDelta
+                    weekDelta = 0   # reset weekDelta
+
+                # add day delta
+                if dayDelta != 0:
+                    # print "and " + dayDelta.group(0) + " days"
+                    eps_end_date = First_Calendar_Day + dayDelta
+                    dayDelta = 0    # reset datDelta
+
+                # set holder for this eps end date
+                last_eps_end_date = eps_end_date
+
+                ep = {}
+                ep['season'] = season_id.group(0)
+                ep['title'] = eps_title.group(0).replace(',', '').replace('"', '')
+                ep['episode'] = episode_id.group(0)
+                ep['time_since_pilot'] = eps_tdelta.group(0)
+                ep['calendar_start'] = eps_start_date
+                ep['calendar_end'] = eps_end_date
+                print ep
+                print ''
+                all_episodes.append(ep)
+
+        return all_episodes
 
 
 def get_ep_from_movie(imdb_handler, movie):
@@ -94,17 +195,20 @@ def get_ep_id_list(imdb_handler, movie):
     return eps
 
 
-def get_all_episodes(imdb_handler, movie):
+def get_all_episodes(imdb_handler, movie, episode_dates):
     """
     Returns a list of MyEpisode objects.
     """
     eps = []
     ep_ids = get_ep_id_list(imdb_handler, movie)
+
     for id in ep_ids:
-        episode = MyEpisode(imdb_handler.get_movie(id), id)
+        episode = MyEpisode(imdb_handler.get_movie(id), id, episode_dates)
         eps.append(episode)
-    # print dir(eps[1])
-    # print eps[1].data
+
+    for i in xrange(len(episode_dates)):
+        eps[i].set_time(episode_dates[i])
+
     return eps
 
 
@@ -118,6 +222,8 @@ def get_episode_images(ep_id):
 
 
 def main():
+    # args = parse_args()   # filename using this is accessed by args.filename
+
     i = IMDb()
 
     # Some testing stuff for individual episodes
@@ -128,13 +234,16 @@ def main():
     # epi = MyEpisode(bb_5_2, '2301457')
     # print epi.to_dict()
 
+    filename = "data/seasons_time_guide.html"
+    episode_dates = parse_html(filename)
+
     bb = i.get_movie('0903747')       # Breaking Bad Series ID
-    all_episodes = get_all_episodes(i, bb)
+    all_episodes = get_all_episodes(i, bb, episode_dates)
+
     for ep in all_episodes:
         pp(ep.to_dict())
 
     return all_episodes
-
 
 
 if __name__ == '__main__':
